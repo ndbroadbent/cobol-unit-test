@@ -1,8 +1,6 @@
 #!/bin/bash
-#================================================================================
-# Build ZUTZCPC.CBL - Z390 compatible unit test framework for batch COBOL.
-#================================================================================
-. envvars
+set -e
+. ./envvars
 
 export COBCPY="$MAINCPY:$TESTCPY"
 
@@ -20,12 +18,12 @@ CLEAN=false
 TEST=false
 SUBPROGRAM=false
 
-TEMP=`getopt -o chst --long clean,help,subprogram,test \
-             -n 'javawrap' -- "$@"`
+# TEMP=`getopt -o chst --long clean,help,subprogram,test \
+#              -n 'javawrap' -- "$@"`
 
-if [ $? != 0 ] ; then show_help >&2 ; exit 0 ; fi
+# if [ $? != 0 ] ; then show_help >&2 ; exit 0 ; fi
 
-eval set -- "$TEMP"
+# eval set -- "$TEMP"
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -44,13 +42,13 @@ if [ $# -eq 0 ]
     exit 0
 fi
 
-mkdir -p "$TARGET" 
+mkdir -p "$TARGET"
 
 if [ $TEST == true ]; then              # compile test source
 	SOURCE="$TESTSRC"
 else
   SOURCE="$MAINSRC"                     # compile production source
-fi	
+fi
 
 if [ $SUBPROGRAM == true ]; then        # make a dynamic link module
   SUFFIX='.so'
@@ -59,12 +57,12 @@ else                                    # make an executable
   SUFFIX=
   COBOPTS='-x'
 fi
-
                                         # remove existing output file, if any
 if [ $CLEAN == true ] && [ -e "$TARGET/${1}${SUFFIX}" ]; then
     rm "$TARGET/${1}${SUFFIX}"
-fi  
+fi
 
+export COB_CFLAGS="-fbracket-depth=512"
 cobc "$COBOPTS" -std=ibm "$SOURCE/$1.CBL"        # compile, assemble, link w/ selected options
 
 if [ $? -eq 0 ]                         # copy output file to target directory
@@ -72,5 +70,5 @@ if [ $? -eq 0 ]                         # copy output file to target directory
     mv "${1}${SUFFIX}" "$TARGET/."
     exit 0
   else
-    exit 1  
+    exit 1
 fi

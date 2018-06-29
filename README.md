@@ -1,6 +1,6 @@
 # Cobol unit testing framework for mainframe programs
 
-The goal of the project is to enable isolated unit testing of individual paragraphs in Cobol programs in a standalone environment with no connection to a zOS system. 
+The goal of the project is to enable isolated unit testing of individual paragraphs in Cobol programs in a standalone environment with no connection to a zOS system.
 
 Please see [the wiki](https://github.com/neopragma/cobol-unit-test/wiki/) for more information.
 
@@ -11,12 +11,12 @@ The unit test precompiler copies the program under test and inserts test code in
 ## A brief sample
 
 ```
-           TESTSUITE 'CONVERT COMMA-DELIMITED FILE TO FIXED FORMAT' 
+           TESTSUITE 'CONVERT COMMA-DELIMITED FILE TO FIXED FORMAT'
 
       *****************************************************************
       * COBOL COMMENTS ARE IGNORED SO YOU CAN DO THIS SORT OF THING IF
       * YOU PLEASE.
-      *****************************************************************  
+      *****************************************************************
 
            BEFORE-EACH
                MOVE FOO TO BAR
@@ -27,16 +27,16 @@ The unit test precompiler copies the program under test and inserts test code in
                INITIALIZE WS-RESULTS-TABLE
            END-AFTER
 
-           TESTCASE 'IT CONVERTS TEXT FIELD 1 TO UPPER CASE' 
+           TESTCASE 'IT CONVERTS TEXT FIELD 1 TO UPPER CASE'
                MOVE 'something' TO TEXT-VALUE-1
                PERFORM 2100-CONVERT-TEXT-FIELD-1
                EXPECT TEXT-OUT-1 TO BE 'SOMETHING'
 
            TESTCASE 'IT HANDLES FILE NOT FOUND GRACEFULLY'
                MOCK
-                   FILE INPUT-FILE 
+                   FILE INPUT-FILE
                    ON OPEN STATUS FILE-NOT-FOUND
-               END-MOCK    
+               END-MOCK
                PERFORM 0100-OPEN-INPUT
                EXPECT WS-INPUT-FILE-STATUS TO BE '35'
                EXPECT WS-FRIENDLY-MESSAGE TO BE 'SORRY, COULDN''T FIND INPUT-FILE'
@@ -54,7 +54,7 @@ BEFORE-EACH, AFTER-EACH - the precompiler copies these statements into paragraph
 
 TESTCASE - identifies a test case. The description is echoed in the output of the test run.
 
-EXPECT - asserts an expected result. Current version supports PIC X, numeric, and 88-level compares. 
+EXPECT - asserts an expected result. Current version supports PIC X, numeric, and 88-level compares.
 
 VERIFY - verifies that a mock was accessed the expected number of times.
 

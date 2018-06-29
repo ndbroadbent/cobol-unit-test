@@ -11,7 +11,7 @@
 
 function run_unit_tests {
 
-  . envvars
+  . ./envvars
 
   export SRCPRG="$MAINSRC/$PROGRAM.CBL"
   export TESTPRG="$TESTSRC/TESTPRG.CBL"
@@ -37,19 +37,19 @@ function run_unit_tests {
       compile -ts "$TESTNAME"
       mv "$TARGET/TESTPRG.so" "$TARGET/$PROGRAM.so"
       "$TARGET/$DRIVER"
-    else  
+    else
       compile -t "$TESTNAME"
       "$TARGET/$TESTNAME"
-    fi  
-  fi			
+    fi
+  fi
 }
 
 function show_help {
 	echo 'Run unit test cases for a Cobol program'
-	echo 'Usage: run ut [options]' 
-  echo '           config-file-name' 
+	echo 'Usage: run ut [options]'
+  echo '           config-file-name'
   echo '           program-name-without-suffix'
-  echo '           unit-test-copy-file-name' 
+  echo '           unit-test-copy-file-name'
   echo '           [test-driver-program-name]'
   echo '    -d | --debug      Echo debugging information'
 	echo '    -h | --help       Display usage help (this text) and exit'
@@ -65,12 +65,12 @@ function show_version {
 DEBUG=false
 SUBPROGRAM=false
 
-TEMP=`getopt -o dhsv --long debug,help,subprogram,version \
-             -n 'javawrap' -- "$@"`
+# TEMP=`getopt -o dhsv --long debug,help,subprogram,version \
+#              -n 'javawrap' -- "$@"`
 
-if [ $? != 0 ] ; then show_help >&2 ; exit 0 ; fi
+# if [ $? != 0 ] ; then show_help >&2 ; exit 0 ; fi
 
-eval set -- "$TEMP"
+# eval set -- "$TEMP"
 
 while [ $# -gt 0 ]; do
   case "$1" in

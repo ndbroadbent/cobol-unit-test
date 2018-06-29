@@ -2,7 +2,7 @@
        PROGRAM-ID.  SAMPLE.
       *****************************************************************
       * TRIVIAL PROGRAM TO EXERCISE ZUTZCPC.
-      *****************************************************************       
+      *****************************************************************
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
@@ -16,11 +16,11 @@
        2000-SPEAK.
            IF WS-MESSAGE-TYPE IS EQUAL TO 'GREETING'
                MOVE 'HELLO, WORLD!' TO WS-MESSAGE
-           END-IF  
+           END-IF
            IF WS-MESSAGE-TYPE IS EQUAL TO 'FAREWELL'
-               MOVE 'SEE YOU LATER, ALLIGATOR!' TO WS-MESSAGE  
-           END-IF    
-           .    
+               MOVE 'SEE YOU LATER, ALLIGATOR!' TO WS-MESSAGE
+           END-IF
+           .
 
        9999-END.
            .

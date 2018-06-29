@@ -5,7 +5,7 @@
            05  UT-CONST-ES               PIC X(02) VALUE 'ES'.
            05  UT-LABEL-EXPECTED-ACCESS.
                10  FILLER                PIC X(06) VALUE 'ACCESS'.
-               10  UT-LABEL-EXPECTED-ACCESS-PL 
+               10  UT-LABEL-EXPECTED-ACCESS-PL
                                          PIC X(02) VALUE SPACES.
            05  UT-DISPLAY-MESSAGE        PIC X(256) VALUE SPACES.
            05  FILLER                    PIC X(01) VALUE SPACES.
@@ -14,10 +14,10 @@
            05  FILLER                    PIC X(01) VALUE '1'.
                88  UT-VERIFY-EXACT                 VALUE '1'.
                88  UT-VERIFY-AT-LEAST              VALUE '2'.
-               88  UT-VERIFY-NO-MORE-THAN          VALUE '3'.   
+               88  UT-VERIFY-NO-MORE-THAN          VALUE '3'.
            05  FILLER                    PIC X(01) VALUE SPACES.
                88  UT-VERIFY-PASSED      VALUE 'Y'.
-               88  UT-VERIFY-FAILED      VALUE SPACES.    
+               88  UT-VERIFY-FAILED      VALUE SPACES.
            05  FILLER                    PIC X(01) VALUE SPACES.
                88  UT-COMPARE-DEFAULT    VALUE SPACE.
                88  UT-COMPARE-NUMERIC    VALUE 'N'.
@@ -69,11 +69,11 @@
                    88  UT-MOCK-SQL           VALUE 'SQL'.
                    88  UT-MOCK-PARA          VALUE 'PARA'.
                10  UT-MOCK-ACCESS-COUNT    PIC 9(04) VALUE ZERO.
-               10  UT-MOCK-RECORD        PIC X(8192).    
+               10  UT-MOCK-RECORD        PIC X(8192).
                10  UT-MOCK-DATA          PIC X(806).
-               10  UT-MOCK-FILE-DATA REDEFINES UT-MOCK-DATA.        
-                   15  UT-MOCK-FILENAME       PIC X(31).    
-                   15  UT-MOCK-OPERATION      PIC X(20).  
+               10  UT-MOCK-FILE-DATA REDEFINES UT-MOCK-DATA.
+                   15  UT-MOCK-FILENAME       PIC X(31).
+                   15  UT-MOCK-OPERATION      PIC X(20).
                    15  UT-MOCK-FILE-STATUS    PIC X(02).
                    15  FILLER                 PIC X(753).
                10  UT-MOCK-CALL-DATA REDEFINES UT-MOCK-DATA.
@@ -82,7 +82,7 @@
                    15  UT-MOCK-CICS-KEYWORDS-KEY PIC X(806).
                10  UT-MOCK-PARA-DATA REDEFINES UT-MOCK-DATA.
                    15  UT-MOCK-PARA-NAME  PIC X(31).
-                   15  FILLER             PIC X(775).    
+                   15  FILLER             PIC X(775).
                10  UT-MOCK-SQL-DATA REDEFINES UT-MOCK-DATA.
                    15  FILLER             PIC X(806).
        01  UT-FILES.
@@ -97,4 +97,4 @@
                    15  UT-RECORD-FIELD-NAME      PIC X(31).
                    15  UT-FILE-STATUS-FIELD-NAME PIC X(31).
 
-      * END OF TEST CODE 
+      * END OF TEST CODE
